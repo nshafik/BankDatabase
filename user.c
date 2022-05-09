@@ -38,19 +38,22 @@ st_account* login(){
 		{
 			printf("Bank ID not found, please try again!\n");
 		}
-		else if (x->access ==0)
-		{
-			printf("Bank Account is deactivated\n");
-		}
-		
 	
-	}while(!searchId(id) && x->access == 1 );
+	}while(!searchId(id));
 
 	return x;
 }
 
 void user(){
-	money(login());
+	st_account *x =login;
+	if (x->access ==0)
+		{
+			printf("Bank Account is deactivated\n");
+		}
+	else{
+		money(x);
+
+	}
 }
 
 void money(st_account* x){
