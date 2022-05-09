@@ -64,7 +64,7 @@ void money();
 void admin();
 void adminUser(st_account *account);
 void changeAccess(st_account *account);
-
+void deleteAccount(st_account *account);
 
 /* search functions*/
 st_account* searchId(u8 *id); 

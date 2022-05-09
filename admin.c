@@ -69,6 +69,8 @@ void getInfo(st_account *x){
 
 	printf("Please enter Age: ");
 	scanf(" %d", &(x->age));
+	printf("Please enter Address: ");
+	scanf(" %d", &(x->address));
 
 }
 
@@ -83,6 +85,7 @@ void printInfo(){
     else
     {
         while (temp != NULL){
+			printf("Access:%s",temp->access);
 			printf("Name:%s",temp->name);
 			printf("\nNat ID:");
 			for (int j = 0; j < 14; ++j)
@@ -112,6 +115,10 @@ void printInfo(){
 			{
 				printf("%d",temp->pass[j]);	
 			}
+			
+			printf("\nAddress: %s", temp->address);
+			printf("\nBalance: %s", temp->balance);
+
 		temp = temp->next;
 		printf("\n\n");
 
@@ -170,6 +177,13 @@ void adminUser(st_account *account){
 				changeAccess(account);
 				flag=1;
 				break;
+			
+			case 'd':
+				deleteAccount(account);
+				flag=1;
+				printInfo();
+				break;
+
 			case 'o':
 				money(account);
 				break;
@@ -181,5 +195,28 @@ void adminUser(st_account *account){
 			break;
 		}
 		
+	}
+}
+
+void deleteAccount(st_account *account){
+	st_account *temp;
+    temp = root;
+	while ( temp->next !=NULL)
+	{
+		
+		if (temp->next==account)
+		{
+			temp->next=temp->next->next;
+
+			break;
+		}
+
+		temp=temp->next;
+		
+	}
+	
+	if (account==temp)
+	{
+		root=root->next;
 	}
 }

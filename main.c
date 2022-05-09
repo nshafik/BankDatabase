@@ -26,7 +26,7 @@ int main()
 		}
 		else if(mode=='u'){
 			printf("user mode\n");
-			money();
+			money(login());
 		}
 	}
 

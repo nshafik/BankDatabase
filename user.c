@@ -28,21 +28,23 @@ st_account* login(){
 	u8 id[10];
 	st_account *x ;
 	do{
-	do{
-		printf("Please enter Bank ID: ");
-		scanf("%s", &(id)); 
-	}while(!validBankID(id));
-	x=searchId(id);
-	if(!searchId(id))
-	{
-		printf("Bank ID not found, please try again!\n");
-	}
-	else if (x->access ==0)
-	{
-		printf("Bank Account is deactivated\n");
-	}
+		do{
+			printf("Please enter Bank ID: ");
+			scanf("%s", &(id)); 
+
+		}while(!validBankID(id) );
+		x=searchId(id);
+		if(!searchId(id))
+		{
+			printf("Bank ID not found, please try again!\n");
+		}
+		else if (x->access ==0)
+		{
+			printf("Bank Account is deactivated\n");
+		}
+		
 	
-	}while(!searchId(id) && x->access == 1);
+	}while(!searchId(id) && x->access == 1 );
 
 	return x;
 }
