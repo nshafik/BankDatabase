@@ -19,7 +19,6 @@ typedef struct st_guardian
 {
 	u8 natID[14];	
 	u8 name[50];
-	struct st_guardian* next;
 
 }st_guardian;
 

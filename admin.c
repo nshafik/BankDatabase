@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include "typeDef.h"
 extern st_account *root ;
-extern st_guardian *base;
 
 
 void append(){
@@ -37,24 +36,8 @@ void addAccount(st_account *x){
 	}
 }
 void appendAdult(st_account *x){
-	st_guardian* temp;
-    temp = (st_guardian*)malloc(sizeof(st_guardian));
+	st_guardian* temp = malloc(sizeof(st_guardian));
    	underAge(x,temp);
-
-    temp->next = NULL;
-    if(base == NULL) //list is empty
-    {
-        base=temp;
-    }else
-    {
-    	st_account* p;
-        p=base;
-        while(p->next != NULL)
-        {
-            p = p->next;
-        }
-        p->next = temp;
-    }
 }
 
 void underAge(st_account *x, st_guardian *y){
