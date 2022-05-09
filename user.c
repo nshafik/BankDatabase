@@ -24,24 +24,37 @@ void transaction(st_account *x,st_account *y, u32 amount){
 	getCash(x,amount);
 	deposit(y,amount);
 }
-
-void money(){
-	u8 func;
-	u32 amount;
+st_account* login(){
 	u8 id[10];
-	st_account *x , *y;
+	st_account *x ;
 	do{
-		do{
-			printf("Please enter Bank ID: ");
-			scanf("%s", &(id)); 
-		}while(!validBankID(id));
-		x=searchId(id);
+	do{
+		printf("Please enter Bank ID: ");
+		scanf("%s", &(id)); 
+	}while(!validBankID(id));
+	x=searchId(id);
+	if(!searchId(id))
+	{
+		printf("Bank ID not found, please try again!\n");
+	}
+	else if (x->access ==0)
+	{
+		printf("Bank Account is deactivated\n");
+	}
+	
+	}while(!searchId(id) && x->access == 1);
 
-		if(!searchId(id))
-		{
-			printf("Bank ID not found, please try again!\n");
-		}
-	}while(!searchId(id));
+	return x;
+}
+
+void user(){
+	money(login());
+}
+
+void money(st_account* x){
+	u8 func, id[10];
+	u32 amount;
+	st_account *y;
 
 	while(1){
 		printf("Please enter function: ");

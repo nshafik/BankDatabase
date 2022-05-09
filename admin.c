@@ -121,6 +121,7 @@ void printInfo(){
 
 void admin(){
 	u8 func;
+	st_account *x;
 	while(1){
 		printf("Please select function\n");
 		printf("'e' main menu, 'a' to create new account, 'u' to open an existing user account\n");
@@ -137,7 +138,8 @@ void admin(){
 				break;					
 
 			case 'u':
-				money();
+				x=login();
+				adminUser(x);
 				break;
 
 			default:
@@ -147,4 +149,37 @@ void admin(){
 				
 	}
 
+}
+
+void changeAccess(st_account *account){
+	account->access ^=1;
+}
+
+void adminUser(st_account *account){
+	u8 func,flag=0;
+	while(1){
+		printf("Please select function\n");
+		printf("'e' main menu, 'a' to change access, 'o' for other functions\n");
+		scanf(" %c",&func);
+		if (func == 'e')
+		{
+			break;
+		}
+		switch(func){
+			case 'a':
+				changeAccess(account);
+				flag=1;
+				break;
+			case 'o':
+				money(account);
+				break;
+			default:
+				printf("not a valid function \n");
+		}
+		if (flag==1)
+		{
+			break;
+		}
+		
+	}
 }

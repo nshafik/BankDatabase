@@ -4,8 +4,6 @@
 #include "typeDef.h"
 
 st_account *root = NULL;
-st_guardian *base= NULL;
-
 
 int main()
 {

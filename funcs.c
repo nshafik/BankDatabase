@@ -43,6 +43,7 @@ int validBankID(u8 *x){
 }
 
 void pbaGenerator(st_account *x){
+	x->access=1;
 	srand(time(NULL));   
 
 	for (int i = 0; i < 4; ++i)

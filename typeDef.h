@@ -62,7 +62,10 @@ void transaction(st_account *x,st_account *y, u32 amount);
 void changePass(st_account *x);
 void money();
 void admin();
+void adminUser(st_account *account);
+void changeAccess(st_account *account);
 
 
 /* search functions*/
 st_account* searchId(u8 *id); 
+st_account* login();
