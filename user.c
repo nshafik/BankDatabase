@@ -45,7 +45,7 @@ st_account* login(){
 }
 
 void user(){
-	st_account *x =login;
+	st_account *x =login();
 	if (x->access ==0)
 		{
 			printf("Bank Account is deactivated\n");
